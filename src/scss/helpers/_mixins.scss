@@ -1,0 +1,95 @@
+@mixin custom-placeholder-style {
+  ::-webkit-input-placeholder {
+    color: #999;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  ::-moz-placeholder {
+    color: #999;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  :-ms-input-placeholder {
+    color: #999;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  :-moz-placeholder {
+    color: #999;
+    text-align: left;
+    font-weight: 400;
+  }
+}
+
+@mixin custom-scrollbar-style {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #ddd;
+  }
+}
+
+@mixin single-line-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin hide-file-input {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;  
+}
+
+@mixin disable-element {
+	pointer-events: none;
+  opacity: 0.5;  
+}
+
+@mixin atExtraSmall {
+  @media (max-width: 575px) {
+    @content;
+  }
+}
+
+@mixin atSmall {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+@mixin atMedium {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin atLarge {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin atExtraLarge {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}

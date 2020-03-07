@@ -1,0 +1,15 @@
+.u-section-padding {
+  padding: 4rem 0;
+
+  @include atMedium {
+    padding: 6rem 0;
+  }
+
+  @include atLarge {
+    padding: 8rem 0;
+  }
+}
+
+.u-section-padding-small {
+  padding: 4rem 0;
+}

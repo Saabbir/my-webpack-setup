@@ -1,0 +1,73 @@
+html {
+  font-size: 62.5%; // 1rem = 10px hack
+}
+
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  word-break: break-word;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    text-decoration: underline;
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+p,
+a,
+code {
+  word-wrap: break-word;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+[disabled] {
+  cursor: auto;
+}
+
+pre {
+  background-color: #f5f5f5;
+  border-color: #e0e0e0;
+  border-radius: 2px;
+  margin: 0;
+}
+
+hr {
+  margin: 0;
+  border-color: #e0e0e0;
+}
+
+textarea:focus {
+  outline: none;
+  resize: vertical;
+}
