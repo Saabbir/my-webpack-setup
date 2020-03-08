@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const imageminMozjpeg = require('imagemin-mozjpeg')
 const ImageminPlugin = require('imagemin-webpack-plugin').default
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const fse = require('fs-extra')
 
 const postCSSPlugins = []
 
@@ -75,6 +76,31 @@ const fontsConfig = {
   ]
 }
 
+/*
+Loop through all the html files in the src directory and create a new instance
+of HtmlWebpackPlugin for every html files in the directory.
+*/
+const htmlWebpackPluginConfig = fse.readdirSync('./src').filter(file => {
+  return file.endsWith('.html')
+}).map(page => {
+  let title = page.split('.')[0]
+  const titleCapitalized = title.charAt(0).toUpperCase() + title.slice(1)
+
+  return new HtmlWebpackPlugin({
+    filename: page,
+    template: `./src/${page}`,
+    title: `${titleCapitalized} Page`,
+    minify: {
+      collapseWhitespace: true,
+      removeComments: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      useShortDoctype: true
+    }
+  })
+})
+
 let config = {
   entry: ['@babel/polyfill', './src/scripts/index.js'],
   module: {
@@ -84,20 +110,7 @@ let config = {
       fontsConfig
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './src/index.html',
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        useShortDoctype: true
-      }
-    })
-  ]
+  plugins: htmlWebpackPluginConfig
 }
 
 if (currentTask === 'dev') {
